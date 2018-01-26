@@ -1,24 +1,54 @@
 <html>
 
 <head>
-<title>Carburetor Jet Calculator</title>
+   <title>Carburetor Jet Calculator</title>
+
+   <script>
+      function calcJetSize()
+      {
+         var document.getElementById("uniqueID").value;
+         alert("test");
+      }
+   </script>
+
 </head>
 
 <body>
 
-<div class="header">
+<div class="header" style="display:flex;justify-content:center;align-items:center;">
    <h1>yolo</h1>
 </div>
 
-<div class="content">
-   <form>
-      Altitude: <input type="number" name="altitude" value=0> <input type="radio" name="altUnits" value="metres" checked> Metres <input type="radio" name="altUnits" value="feet"> Feet <br><br>
-      Temperature: <input type="number" name="temperature" value=0> <input type="radio" name="tempUnits" value="celsius" checked> celsius <input type="radio" name="tempUnits" value="farenheit"> farenheit <br><br>
-      Jet Size: <input type="number" name="altitude" value=0> <br><br>
-      <input type="submit" name="action" value="Calculate Baseline Jet Size"><input type="submit" name="action" value="Calculate Corrected Jet Size"><br><br>
-   </form>
+<div style="display:flex;justify-content:center;align-items:center;">
+   <div class="content">
+      <form name="jetForm" onsubmit="calcJetSize()">
+         <table>
+            <tr>
+               <td>Altitude: </td>
+               <td><input type="number" name="altitude" value=0 id="altidudeValue"></td>
+               <td><input type="radio" name="altUnits" value="metres" checked> Metres <input type="radio" name="altUnits" value="feet"> Feet </td>
+            </tr>
+            <tr>
+               <td>Temperature: </td>
+               <td><input type="number" name="temperature" value=0 id="temperatureValue"></td>
+               <td><input type="radio" name="tempUnits" value="celsius" checked> celsius <input type="radio" name="tempUnits" value="farenheit"> farenheit</td>
+            </tr>
+            <tr>
+               <td>Jet Size: </td>
+               <td><input type="number" name="jetsize" value=0 id="jetsizeValue"></td>
+               <td></td>
+            <tr>
+         </table>
+         <input type="submit" name="action" value="Calculate Baseline Jet Size"><input type="submit" name="action" value="Calculate Corrected Jet Size"><br><br>
+      </form>
+
+      <p style="display:flex;justify-content:center;align-items:center;" id="result">
+         <h3>{RESULT}</h3>
+      </p>
+   </div>
 </div>
+
+
 
 </body>
 </html>
-
