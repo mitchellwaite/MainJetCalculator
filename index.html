@@ -16,25 +16,43 @@
       {
         var jet = document.getElementById("jetsizeValue").value;
         var result = jet * calcFactor();
-        alert(result);
+        document.getElementById("resultCell").innerHTML = "Corrected Jet Size: " + String(result);
       }
 
       function calcBaseSize()
       {
         var jet = document.getElementById("jetsizeValue").value;
         var result = jet / calcFactor();
-        alert(result);
+        document.getElementById("resultCell").innerHTML = "Baseline Jet Size: " + String(result);
       }
 
       function calcFactor()
       {
+         //3.28084 feet per metre
          var alt = document.getElementById("altitudeValue").value;
+         var alt_f = 0;
+
          var tmp = document.getElementById("temperatureValue").value;
+         var tmp_f = 0;
+
          var altMetres = document.getElementById("altitudeUnits").checked;
          var tmpCelsius = document.getElementById("temperatureUnits").checked;
 
+         if(altMetres){
+            alt_f = alt;
+         }
+         else {
+            alt_f = alt / 3.28084;
+         }
 
-         var factor = (alt * -0.0000276333333333333) + (tmp * -0.00070976430976431) + 1.01391313131313;
+         if(tmpCelsius){
+            tmp_f = tmp;
+         }
+         else {
+            tmp_f = (tmp - 32) * (5.0/9.0);
+         }
+
+         var factor = (alt_f * -0.0000276333333333333) + (tmp_f * -0.00070976430976431) + 1.01391313131313;
          return factor;
          //alert("Altitude: " + String(alt) + "\nTemperature: " + String(tmp) + "\nMetres: " + String(altMetres) + "\nCelsius: " + String(tmpCelsius));
       }
@@ -50,7 +68,6 @@
 
 <div style="display:flex;justify-content:center;align-items:center;">
    <div class="content">
-
          <table>
             <tr>
                <td>Altitude: </td>
@@ -68,11 +85,16 @@
                <td></td>
             <tr>
             <tr>
-              <td style="background-color: linen;text-align: center;" colspan="3">
+              <td style="text-align: center;" colspan="3">
                 <button style="width: 49%;" onclick="calcBaseSize()">Calculate Baseline Jet Size</button>
                 <button style="width: 49%;" onclick="calcJetSize()">Calculate Corrected Jet Size</button>
               </td>
-            </tr>
+           </tr>
+           <tr>
+             <td id="resultCell" style="text-align: center;" colspan="3">
+
+             </td>
+          </tr>
          </table>
    </div>
 </div>
