@@ -15,15 +15,17 @@
       function calcJetSize()
       {
         var jet = document.getElementById("jetsizeValue").value;
-        var result = jet * calcFactor();
-        document.getElementById("resultCell").innerHTML = "Corrected Jet Size: " + String(result);
+        var factor = calcFactor();
+        var result = jet * factor;
+        document.getElementById("resultCell").innerHTML = "<br>Correction Factor: " + String(factor.toFixed(2)) + "<br>Corrected Jet Size: " + String(result.toFixed(2));
       }
 
       function calcBaseSize()
       {
         var jet = document.getElementById("jetsizeValue").value;
-        var result = jet / calcFactor();
-        document.getElementById("resultCell").innerHTML = "Baseline Jet Size: " + String(result);
+        var factor = calcFactor();
+        var result = jet / factor;
+        document.getElementById("resultCell").innerHTML = "<br>Correction Factor: " + String(factor.toFixed(2)) + "<br>Baseline Jet Size: " + String(result.toFixed(2));
       }
 
       function calcFactor()
@@ -62,8 +64,9 @@
 
 <body>
 
-<div class="header" style="display:flex;justify-content:center;align-items:center;">
+<div class="header" style="text-align:center">
    <h1>Main Jet Calculator</h1>
+   <h4><a href="">About & Source</a></h4>
 </div>
 
 <div style="display:flex;justify-content:center;align-items:center;">
