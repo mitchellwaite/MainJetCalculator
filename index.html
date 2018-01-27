@@ -2,12 +2,41 @@
 
 <head>
    <title>Carburetor Jet Calculator</title>
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+   <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+   </style>
 
    <script>
+
       function calcJetSize()
       {
-         var document.getElementById("uniqueID").value;
-         alert("test");
+        var jet = document.getElementById("jetsizeValue").value;
+        var result = jet * calcFactor();
+        alert(result);
+      }
+
+      function calcBaseSize()
+      {
+        var jet = document.getElementById("jetsizeValue").value;
+        var result = jet / calcFactor();
+        alert(result);
+      }
+
+      function calcFactor()
+      {
+         var alt = document.getElementById("altitudeValue").value;
+         var tmp = document.getElementById("temperatureValue").value;
+         var altMetres = document.getElementById("altitudeUnits").checked;
+         var tmpCelsius = document.getElementById("temperatureUnits").checked;
+
+
+         var factor = (alt * -0.0000276333333333333) + (tmp * -0.00070976430976431) + 1.01391313131313;
+         return factor;
+         //alert("Altitude: " + String(alt) + "\nTemperature: " + String(tmp) + "\nMetres: " + String(altMetres) + "\nCelsius: " + String(tmpCelsius));
       }
    </script>
 
@@ -16,35 +45,35 @@
 <body>
 
 <div class="header" style="display:flex;justify-content:center;align-items:center;">
-   <h1>yolo</h1>
+   <h1>Main Jet Calculator</h1>
 </div>
 
 <div style="display:flex;justify-content:center;align-items:center;">
    <div class="content">
-      <form name="jetForm" onsubmit="calcJetSize()">
+
          <table>
             <tr>
                <td>Altitude: </td>
-               <td><input type="number" name="altitude" value=0 id="altidudeValue"></td>
-               <td><input type="radio" name="altUnits" value="metres" checked> Metres <input type="radio" name="altUnits" value="feet"> Feet </td>
+               <td><input type="number" name="altitude" value=0 id="altitudeValue"></td>
+               <td><input type="radio" name="altUnits" value="metres" id="altitudeUnits" checked> Metres <input type="radio" name="altUnits" value="feet"> Feet </td>
             </tr>
             <tr>
                <td>Temperature: </td>
                <td><input type="number" name="temperature" value=0 id="temperatureValue"></td>
-               <td><input type="radio" name="tempUnits" value="celsius" checked> celsius <input type="radio" name="tempUnits" value="farenheit"> farenheit</td>
+               <td><input type="radio" name="tempUnits" value="celsius" id="temperatureUnits" checked> Celsius <input type="radio" name="tempUnits" value="farenheit"> Farenheit</td>
             </tr>
             <tr>
                <td>Jet Size: </td>
                <td><input type="number" name="jetsize" value=0 id="jetsizeValue"></td>
                <td></td>
             <tr>
+            <tr>
+              <td style="background-color: linen;text-align: center;" colspan="3">
+                <button style="width: 49%;" onclick="calcBaseSize()">Calculate Baseline Jet Size</button>
+                <button style="width: 49%;" onclick="calcJetSize()">Calculate Corrected Jet Size</button>
+              </td>
+            </tr>
          </table>
-         <input type="submit" name="action" value="Calculate Baseline Jet Size"><input type="submit" name="action" value="Calculate Corrected Jet Size"><br><br>
-      </form>
-
-      <p style="display:flex;justify-content:center;align-items:center;" id="result">
-         <h3>{RESULT}</h3>
-      </p>
    </div>
 </div>
 
