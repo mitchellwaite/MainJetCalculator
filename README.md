@@ -1,6 +1,6 @@
 # Main Jet Calculator
 
-Find it in operation at: [http://mitchellwaite.ca/MainJetCalculator/]
+Find it in operation at: http://mitchellwaite.ca/MainJetCalculator/
 
 This calculator is essentially a linear interpolation of carburetor jet conversion charts found online. It will give you a good main jet to start when tuning a carburetor for a new altitude or temperature range.
 
